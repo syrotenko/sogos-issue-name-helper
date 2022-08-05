@@ -1,0 +1,1 @@
+# sogos-issue-name-helper
