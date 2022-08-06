@@ -1,0 +1,26 @@
+{
+  "manifest_version": 2,
+  "name": "Issue name Helper",
+  "version": "9.0",
+  "description": "Generates branch names and commit messages",
+  "applications": {
+    "gecko": {
+      "strict_min_version": "48.0"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*/browse/*"],
+      "run_at": "document_idle",
+      "js": ["content_jira.js"]
+    },
+    {
+      "matches": ["https://*/issues/*"],
+      "run_at": "document_idle",
+      "js": ["content_redmine.js"]
+    }
+  ],
+  "browser_action": {
+    "default_popup": "popup.html"
+  }
+}

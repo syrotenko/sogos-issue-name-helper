@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container p-3">
+      <table>
+        <tr>
+          <td width="38"></td>
+          <td>Issue id:</td>
+          <td>Issue name:</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><input id="issueId" class="form-control" style="width: 125px" type="text" /></td>
+          <td><input id="issueName" class="form-control" type="text" /></td>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <td></td>
+          <td>Branch name:</td>
+        </tr>
+        <tr>
+          <td><button id="copyBranchName" type="button" class="btn btn-primary mt-2">
+            C
+          </button></td>
+          <td width="100%"><input id="branchName" class="form-control" type="text" style="margin-top: 7px;"/></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>Commit message:</td>
+        </tr>
+        <tr>
+          <td><button id="copyMessage" type="button" class="btn btn-primary mt-2">
+            C
+          </button></td>
+          <td><input id="commitMessage" class="form-control" type="text" style="margin-top: 7px;"/></td>
+        </tr>
+      </table>
+    </div>
+    <script defer src="popup.js"></script>
+  </body>
+</html>
