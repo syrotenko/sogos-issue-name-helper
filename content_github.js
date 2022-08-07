@@ -1,11 +1,12 @@
 function processGetIssueInfo() {
     try {
-        var typeAndId = document.querySelector('#content > h2').textContent.split('#');
-        var name = document.querySelector('div.subject > div > h3').textContent;
+        var nameAndIdElems = document.querySelectorAll('.gh-header-title > span');
+        var name = nameAndIdElems[0].textContent;
+        var id = nameAndIdElems[1].textContent;
         return Promise.resolve({
-            format: 'itn',
-            type: typeAndId[0].trim(),
-            id: `${typeAndId[1].trim()}`,
+            format: '',
+            type: '',
+            id: id,
             name: name
         });
     } catch (error) {
