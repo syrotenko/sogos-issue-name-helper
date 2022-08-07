@@ -44,6 +44,10 @@ function getFormattedValues(format, type, id, name) {
             branchName = `${type.toLowerCase().trim()}/${id}-${name.toLowerCase().replace(/[^\w\s-]/gi, '').replaceAll(" ", "-")}`;
             commitMessage = `#${id}: ${name}`;
             break;
+        case 'gth':
+            branchName = `${id.substring(1)}-${name.toLowerCase().replace(/[^\w\s-]/gi, '').replaceAll(" ", "-").trim()}`;
+            commitMessage = `${id} ${name}`;
+            break;
         default:
             branchName = `${id}-${name.toLowerCase().replace(/[^\w\s-]/gi, '').replaceAll(" ", "-").trim()}`;
             commitMessage = `${id} ${name}`;

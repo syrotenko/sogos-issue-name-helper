@@ -4,7 +4,7 @@ function processGetIssueInfo() {
         var name = nameAndIdElems[0].textContent;
         var id = nameAndIdElems[1].textContent;
         return Promise.resolve({
-            format: '',
+            format: 'gth',
             type: '',
             id: id,
             name: name
