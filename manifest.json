@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Issue name Helper",
-    "version": "9.0",
+    "version": "10.0.0",
     "description": "Generates branch names and commit messages",
     "applications": {
         "gecko": {
