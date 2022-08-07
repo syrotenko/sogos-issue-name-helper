@@ -18,6 +18,11 @@
             "matches": ["https://*/issues/*"],
             "run_at": "document_idle",
             "js": ["content_redmine.js"]
+        },
+        {
+            "matches": ["https://github.com/*"],
+            "run_at": "document_idle",
+            "js": ["content_github.js"]
         }
     ],
     "browser_action": {
