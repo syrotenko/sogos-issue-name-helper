@@ -7,6 +7,11 @@
 npm install --global web-ext
 ```
 
+## Run extension for local testing
+``` bash
+web-ext run
+```
+
 ## Build extension
 ``` bash
 web-ext build --artifacts-dir ./artifacts --overwrite-dest
