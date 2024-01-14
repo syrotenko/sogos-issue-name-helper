@@ -1,7 +1,7 @@
 {
-    "manifest_version": 2,
+    "manifest_version": 3,
     "name": "Issue name Helper",
-    "version": "11.0.0",
+    "version": "12.0.0",
     "description": "Generates branch names and commit messages",
     "applications": {
         "gecko": {
@@ -28,6 +28,11 @@
             "matches": ["https://trello.com/*"],
             "run_at": "document_idle",
             "js": ["content_trello.js"]
+        },
+        {
+            "matches": ["https://dev.azure.com/*"],
+            "run_at": "document_idle",
+            "js": ["content_azure.js"]
         }
     ],
     "browser_action": {
