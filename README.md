@@ -7,6 +7,8 @@
 - Trello
 - Redmine
 
+![Alt text](issue-name-helper-example.jpg)
+
 ## Prepare environment for development
 ### 1. Install Node.js 16.16.0
 ### 2. Install web-ext
