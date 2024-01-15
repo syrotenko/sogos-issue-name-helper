@@ -2,9 +2,8 @@ function processGetIssueInfo() {
     try {
         var id = document.querySelector('.work-item-form-id').textContent;
         var name = document.querySelector('.work-item-form-title > div > div > input').value;
-        console.log(nameAndIdElems);
         return Promise.resolve({
-            format: '',
+            format: 'azure',
             type: '',
             id: id,
             name: name
