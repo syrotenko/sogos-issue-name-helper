@@ -13,7 +13,7 @@
 - ### Firefox
     Download and run the latest version of the installation file (`*.xpi`)
 - ### Chrome
-    1. Download the archive with source files and unpack it.
+    1. Download the archive with source files (`*.zip`) and unpack it.
     2. Go to `chrome://extensions/` and click the toggle switch next to **Developer mode**.
     3. Click the **Load unpacked** button and select the unpacked extension directory.
     4. Turn off **Developer mode**.
