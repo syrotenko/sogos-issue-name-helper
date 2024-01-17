@@ -1,17 +1,20 @@
+if (typeof browser === "undefined") {
+    browser = chrome;
+}
+
 function processGetIssueInfo() {
     try {
-        var nameAndIdElems = document.querySelectorAll('.gh-header-title > span');
-        var name = nameAndIdElems[0].textContent;
-        var id = nameAndIdElems[1].textContent;
-        return Promise.resolve({
+        var name = document.querySelector('.gh-header-title > bdi').textContent;
+        var id = document.querySelector('.gh-header-title > span').textContent;
+        return {
             format: 'gth',
             type: '',
             id: id,
             name: name
-        });
+        };
     } catch (error) {
         console.error(error);
-        return Promise.reject(error);
+        return {err: error};
     }
 }
 
@@ -22,10 +25,10 @@ function processRequest(request) {
         default:
             var message = `Unknown request ${request.type}`
             console.log(message);
-            return Promise.reject(message);
+            return {err: error};
     }
 }
 
-browser.runtime.onMessage.addListener((request) => {
-    return processRequest(request);
+browser.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+    sendResponse(processRequest(request));
 });

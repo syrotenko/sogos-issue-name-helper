@@ -1,16 +1,20 @@
+if (typeof browser === "undefined") {
+    browser = chrome;
+}
+
 function processGetIssueInfo() {
     try {
         var id = document.querySelector('.work-item-form-id').textContent;
         var name = document.querySelector('.work-item-form-title > div > div > input').value;
-        return Promise.resolve({
+        return {
             format: 'azure',
             type: '',
             id: id,
             name: name
-        });
+        };
     } catch (error) {
         console.error(error);
-        return Promise.reject(error);
+        return {err: error};
     }
 }
 
@@ -21,10 +25,10 @@ function processRequest(request) {
         default:
             var message = `Unknown request ${request.type}`
             console.log(message);
-            return Promise.reject(message);
+            return {err: error};
     }
 }
 
-browser.runtime.onMessage.addListener((request) => {
-    return processRequest(request);
+browser.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+    sendResponse(processRequest(request));
 });

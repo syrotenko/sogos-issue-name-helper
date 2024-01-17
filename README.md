@@ -1,6 +1,6 @@
 # sogos-issue-name-helper
 
-## Supported Issue Tracking Systems
+### Supported Issue Tracking Systems:
 - GitHub
 - Jira
 - Azure DevOps
@@ -9,19 +9,28 @@
 
 ![Alt text](issue-name-helper-example.jpg)
 
-## Prepare environment for development
+## Install
+- ### Firefox
+    Download and run the latest version of the installation file (`*.xpi`)
+- ### Chrome
+    1. Download the archive with source files and unpack it.
+    2. Go to `chrome://extensions/` and click the toggle switch next to **Developer mode**.
+    3. Click the **Load unpacked** button and select the unpacked extension directory.
+    4. Turn off **Developer mode**.
+
+## Development
 ### 1. Install Node.js 16.16.0
 ### 2. Install web-ext
 ``` bash
 npm install --global web-ext
 ```
 
-## Run extension for local testing
+## (deprecated) Local testing
 ``` bash
 web-ext run
 ```
 
-## Build extension
+## (deprecated) Build extension
 ``` bash
 web-ext build --artifacts-dir ./artifacts --overwrite-dest
 ```

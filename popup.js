@@ -1,5 +1,5 @@
-function onError(error) {
-    console.error(`Error: ${error}`);
+if (typeof browser === "undefined") {
+    browser = chrome;
 }
 
 function getBranchNameElem() {
@@ -18,22 +18,6 @@ function copyBranchName() {
 function copyMessage() {
     getCommitMessageElem().select();
     document.execCommand("copy");
-}
-
-async function getActiveTabsAsync() {
-    return browser.tabs.query({
-        currentWindow: true,
-        active: true
-    }).catch(onError);
-}
-
-async function sendMessageToTabsAsync(tabs, message) {
-    var responcesPending = [];
-    for (let tab of tabs) {
-        currentResp = browser.tabs.sendMessage(tab.id, message).catch(onError);
-        responcesPending.push(currentResp);
-    }
-    return responcesPending;
 }
 
 function getFormattedValues(format, type, id, name) {
@@ -70,28 +54,19 @@ function fillFields(format, type, id, name) {
 
 function fillIssueInfo() {
     var message = { type: 'get_issue_info' };
-    resPending = getActiveTabsAsync()
-        .then((tabs) => sendMessageToTabsAsync(tabs, message))
-        .then((responces) => {
-            respSingle = responces[0];
-            respSingle = Array.isArray(responces) && responces.length ? responces[0] : undefined;
-            if (respSingle) {
-                respSingle.then((issueInfo) => {
-                    if (issueInfo) {
-                        fillFields(issueInfo.format, issueInfo.type, issueInfo.id, issueInfo.name);
-                    }
-                })
-            }
-        })
-        .catch(onError);
+    browser.tabs.query(
+        {currentWindow: true, active: true}, function(tabArray) {
+            browser.tabs.sendMessage(tabArray[0].id, message, function(issueInfo) {
+                fillFields(issueInfo.format, issueInfo.type, issueInfo.id, issueInfo.name);
+            });
+        }
+    );
 }
 
 function main() {
     fillIssueInfo();
-    var copyBranchNameButton = document.getElementById("copyBranchName");
-    var copyMessageButton = document.getElementById("copyMessage");
-    copyBranchNameButton.addEventListener("click", copyBranchName);
-    copyMessageButton.addEventListener("click", copyMessage);
+    document.getElementById("copyBranchName").addEventListener("click", copyBranchName);
+    document.getElementById("copyMessage").addEventListener("click", copyMessage);
 }
 
 document.addEventListener("DOMContentLoaded", main);
