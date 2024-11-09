@@ -1,4 +1,4 @@
-# sogus-issue-name-helper
+# ssg-issue-name-helper
 
 ### Supported Issue Tracking Systems:
 - GitHub
